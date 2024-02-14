@@ -1125,6 +1125,65 @@ func (c *Client) GetClient() *http.Client {
 	return c.httpClient
 }
 
+func (c *Client) Clone() *Client {
+	var cp Client
+
+	cp.BaseURL = c.BaseURL
+	cp.QueryParam = c.QueryParam
+	cp.FormData = c.FormData
+	cp.PathParams = c.PathParams
+	cp.RawPathParams = c.RawPathParams
+	cp.Header = c.Header
+	cp.UserInfo = c.UserInfo
+	cp.Token = c.Token
+	cp.AuthScheme = c.AuthScheme
+	cp.Cookies = c.Cookies
+	cp.Error = c.Error
+	cp.Debug = c.Debug
+	cp.DisableWarn = c.DisableWarn
+	cp.AllowGetMethodPayload = c.AllowGetMethodPayload
+	cp.RetryCount = c.RetryCount
+	cp.RetryWaitTime = c.RetryWaitTime
+	cp.RetryMaxWaitTime = c.RetryMaxWaitTime
+	cp.RetryConditions = c.RetryConditions
+	cp.RetryHooks = c.RetryHooks
+	cp.RetryAfter = c.RetryAfter
+	cp.RetryResetReaders = c.RetryResetReaders
+	cp.JSONMarshal = c.JSONMarshal
+	cp.JSONUnmarshal = c.JSONUnmarshal
+	cp.XMLMarshal = c.XMLMarshal
+	cp.XMLUnmarshal = c.XMLUnmarshal
+
+	cp.HeaderAuthorizationKey = c.HeaderAuthorizationKey
+
+	cp.jsonEscapeHTML = c.jsonEscapeHTML
+	cp.setContentLength = c.setContentLength
+	cp.closeConnection = c.closeConnection
+	cp.notParseResponse = c.notParseResponse
+	cp.trace = c.trace
+	cp.debugBodySizeLimit = c.debugBodySizeLimit
+	cp.outputDirectory = c.outputDirectory
+	cp.scheme = c.scheme
+	cp.log = c.log
+	cp.httpClient = c.httpClient
+	cp.proxyURL = c.proxyURL
+	cp.beforeRequest = c.beforeRequest
+	cp.udBeforeRequest = c.udBeforeRequest
+	cp.udBeforeRequestLock = sync.RWMutex{}
+	cp.preReqHook = c.preReqHook
+	cp.successHooks = c.successHooks
+	cp.afterResponse = c.afterResponse
+	cp.afterResponseLock = sync.RWMutex{}
+	cp.requestLog = c.requestLog
+	cp.responseLog = c.responseLog
+	cp.errorHooks = c.errorHooks
+	cp.invalidHooks = c.invalidHooks
+	cp.panicHooks = c.panicHooks
+	cp.rateLimiter = c.rateLimiter
+
+	return &cp
+}
+
 //‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾
 // Client Unexported methods
 //_______________________________________________________________________
